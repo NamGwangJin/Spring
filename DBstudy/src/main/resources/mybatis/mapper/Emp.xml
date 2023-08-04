@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+									  	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.himedia.springboot.EmpDAO">
+<select id="getEmpList" resultType="com.himedia.springboot.EmpDTO" >
+	select employee_id, emp_name, salary, manager_id, department_id from employees
+</select>
+
+<select id="getDepList" resultType="com.himedia.springboot.DepDTO">
+	select a.department_id, a.department_name, a.manager_id, b.emp_name
+ 	from departments a left join employees b on a.manager_id = b.EMPLOYEE_ID
+</select>
+</mapper>
