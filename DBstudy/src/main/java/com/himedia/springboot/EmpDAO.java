@@ -9,4 +9,8 @@ public interface EmpDAO {
 	ArrayList<EmpDTO> getEmpList();
 	
 	ArrayList<DepDTO> getDepList();
+	
+	IdDTO view(int id);
+	
+	ArrayList<SalaryDTO> salary(int min,int max);
 }

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 public class MyController {
 	
@@ -50,8 +52,8 @@ public class MyController {
 			jo.put("id", alEmp.get(i).employee_id);
 			jo.put("name", alEmp.get(i).emp_name);
 			jo.put("sal", alEmp.get(i).salary);
-			jo.put("manid", alEmp.get(i).manager_id);
-			jo.put("depid", alEmp.get(i).department_id);
+			jo.put("manName", alEmp.get(i).manager_name);
+			jo.put("depName", alEmp.get(i).department_name);
 			ja.add(jo);
 		}
 		return ja.toJSONString();
@@ -70,5 +72,22 @@ public class MyController {
 			ja.add(jo);
 		}
 		return ja.toJSONString();
+	}
+	
+	@GetMapping("/view")
+	public String view(HttpServletRequest req, Model model) {
+		int id = Integer.parseInt(req.getParameter("id"));
+		IdDTO ed = empdao.view(id);
+		model.addAttribute("person",ed);
+		return "view";
+	}
+	
+	@GetMapping("/salary")
+	public String salary(HttpServletRequest req, Model model) {
+		int min = Integer.parseInt(req.getParameter("min"));
+		int max = Integer.parseInt(req.getParameter("max"));
+		ArrayList<SalaryDTO> sd = empdao.salary(min, max);
+		model.addAttribute("salary",sd);
+		return "salary";
 	}
 }

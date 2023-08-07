@@ -1,7 +1,6 @@
 package com.himedia.springboot;
 
-public class EmpDTO {
-	//select 대상인 컬럼들을 필드로 선언
+public class SalaryDTO {
 	int employee_id;
 	String emp_name;
 	int salary;

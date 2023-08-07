@@ -3,11 +3,23 @@
 									  	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.himedia.springboot.EmpDAO">
 <select id="getEmpList" resultType="com.himedia.springboot.EmpDTO" >
-	select employee_id, emp_name, salary, manager_id, department_id from employees
+	select a.employee_id, a.emp_name, a.salary, b.emp_name manager_name, c.department_name
+	 from employees a left join employees b on a.manager_id = b.employee_id
+	 						   left join departments c on a.department_id = c.department_id
 </select>
 
 <select id="getDepList" resultType="com.himedia.springboot.DepDTO">
 	select a.department_id, a.department_name, a.manager_id, b.emp_name
  	from departments a left join employees b on a.manager_id = b.EMPLOYEE_ID
+</select>
+<select id="view" resultType="com.himedia.springboot.IdDTO">
+	select employee_id, emp_name, salary, manager_id, department_id from employees
+	where employee_id=#{param1}
+</select>
+<select id="salary" resultType="com.himedia.springboot.SalaryDTO">
+	select a.employee_id, a.emp_name, a.salary, b.emp_name manager_name, c.department_name
+	 from employees a left join employees b on a.manager_id = b.employee_id
+	 						   left join departments c on a.department_id = c.department_id
+	 where a.salary between #{param1} and #{param2}
 </select>
 </mapper>
