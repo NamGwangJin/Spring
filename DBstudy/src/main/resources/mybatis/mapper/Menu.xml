@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+									  	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.himedia.springboot.MenuDAO">
+<insert id="insert" parameterType="java.util.HashMap">
+	insert into menu set name=#{param1}, price=#{param2}
+</insert>
+<select id="select" resultType="com.himedia.springboot.MenuDTO">
+	select seq, name, price from menu order by seq
+</select>
+<delete id="delete">
+	delete from menu where seq = #{param1}
+</delete>
+</mapper>						  	  
