@@ -62,7 +62,7 @@ public class MenuController {
 		int cnt = mdao.insert(name, price);
 		System.out.println("inserted count [ " + cnt + " ] ");
 		
-		return ""+cnt;
+		return String.valueOf(cnt);
 	}
 	
 	@PostMapping("/delete")
