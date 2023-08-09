@@ -8,7 +8,19 @@
 <select id="select" resultType="com.himedia.springboot.MenuDTO">
 	select seq, name, price from menu order by seq
 </select>
-<delete id="delete">
+<delete id="delete1">
 	delete from menu where seq = #{param1}
+	ALTER TABLE menu AUTO_INCREMENT = 1;
+	SET @COUNT = 0;
+	UPDATE menu SET seq = @COUNT := @COUNT + 1;
 </delete>
+<delete id="delete" parameterType="java.util.HashMap">
+	delete from menu where seq = #{param1};
+	ALTER TABLE menu AUTO_INCREMENT = 1;
+	SET @COUNT = 0;
+	UPDATE menu SET seq = @COUNT := @COUNT + 1;
+</delete>
+<update id="update" parameterType="java.util.HashMap">
+	update menu set name=#{param2}, price=#{param3} where seq=#{param1}
+</update>
 </mapper>						  	  

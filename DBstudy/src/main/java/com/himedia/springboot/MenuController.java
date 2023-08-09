@@ -65,11 +65,33 @@ public class MenuController {
 		return String.valueOf(cnt);
 	}
 	
-	@PostMapping("/delete")
+	@PostMapping("/formDelete")
 	public String doDelete(HttpServletRequest req) {
 		int num = Integer.parseInt(req.getParameter("num"));
-		mdao.delete(num);
+		mdao.delete1(num);
 
 		return "redirect:addmenu2";
+	}
+	
+	@PostMapping("/delete")
+	@ResponseBody
+	public String delete(HttpServletRequest req) {
+		int num = Integer.parseInt(req.getParameter("num"));
+		int cnt = mdao.delete(num);
+		System.out.println("delete count [ " + cnt + " ] ");
+
+		return String.valueOf(cnt);
+	}
+	
+	@PostMapping("/update")
+	@ResponseBody
+	public String update(HttpServletRequest req) {
+		int num = Integer.parseInt(req.getParameter("num"));
+		String name = req.getParameter("name");
+		int price = Integer.parseInt(req.getParameter("price"));
+		int cnt = mdao.update(num, name, price);
+		System.out.println("update count [ " + cnt + " ] ");
+		
+		return String.valueOf(cnt);
 	}
 }

@@ -10,5 +10,8 @@ public interface MenuDAO {
 	
 	ArrayList<MenuDTO> select();
 	
-	void delete(int num);
+	void delete1(int num);
+	int delete(int num);
+	
+	int update(int num, String name, int price);
 }
