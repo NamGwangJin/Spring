@@ -1,0 +1,10 @@
+table{ border-collapse:collapse; font-family:fantasy;}
+.table { border-collapse:separate; border-spacing:30px;}
+td { font-weight:bold; }
+tr { height:100px; background-color:burlywood; }
+option{ font-size:30px; font-family:fantasy; }
+select { background-color: blanchedalmond; }
+.btn { width:100px; height:50px; background-color:skyblue; font-weight:bold; }
+.btncc { width:100px; height:50px; background-color:crimson; font-weight:bold; }
+.fs20 { font-size:20px; }
+.inputstyle { background-color:blanchedalmond; font-size:20px; }

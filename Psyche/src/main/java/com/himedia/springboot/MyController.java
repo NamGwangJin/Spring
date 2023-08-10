@@ -63,22 +63,6 @@ public class MyController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
-	@GetMapping("/test01")
-	public String doTest01() {
-		return "test01";
-	}
-	
-	@PostMapping("/plus")
-	public String doPlus(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		float num1 = Float.parseFloat(req.getParameter("num1"));
-		float num2 = Float.parseFloat(req.getParameter("num2"));
-		session.setAttribute("result1",num1);
-		session.setAttribute("result2",num2);
-		return "result01";
-	}
-	
 	@GetMapping("/ano")
 	public String doAnother() {
 		return "signon";
@@ -93,6 +77,21 @@ public class MyController {
 			return "남광진";
 		}
 		return "누구세요";
+	}
+	
+	@GetMapping("/test01")
+	public String doTest01() {
+		return "test01";
+	}
+	
+	@PostMapping("/plus")
+	public String doPlus(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		float num1 = Float.parseFloat(req.getParameter("num1"));
+		float num2 = Float.parseFloat(req.getParameter("num2"));
+		session.setAttribute("result1",num1);
+		session.setAttribute("result2",num2);
+		return "result01";
 	}
 	
 	@GetMapping("/study")

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+									  	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.himedia.springboot.MenuDAO">
+
+<insert id="insert" parameterType="java.util.HashMap">
+	insert into menu set name=#{param1}, price=#{param2}
+</insert>
+
+<select id="select" resultType="com.himedia.springboot.MenuDTO">
+	select seq, name, price from menu order by seq
+</select>
+
+<insert id="salesInsert" parameterType="java.util.HashMap">
+	insert into outgo set mobile=#{param1}, total=#{param2}, created=#{param3}
+</insert>
+
+<select id="salesSelect" resultType="com.himedia.springboot.OutgoDTO">
+	select mobile, total, created from outgo
+</select>
+
+<delete id="delete" parameterType="java.util.HashMap">
+	delete from menu where seq=#{param1};
+	ALTER TABLE menu AUTO_INCREMENT = 1;
+	SET @COUNT = 0;
+	UPDATE menu SET seq = @COUNT := @COUNT + 1;
+</delete>
+
+<update id="update" parameterType="java.util.HashMap">
+	update menu set name=#{param2}, price=#{param3} where seq=#{param1}
+</update>
+
+<insert id='signup' parameterType="java.util.HashMap">
+insert into member set userid=#{param1}, passcode=#{param2}
+</insert>
+
+<select id='userSelect' parameterType="java.util.HashMap">
+select count(*) from member where userid=#{param1} and passcode=#{param2}
+</select>
+
+</mapper>

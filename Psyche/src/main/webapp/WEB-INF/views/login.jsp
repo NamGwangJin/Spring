@@ -12,7 +12,7 @@
 <tr><td>로그인 아이디</td><td><input type=text name=logid></td></tr><br>
 <tr><td>비 밀 번 호</td><td><input type=password name=pwd></td></tr><br>
 <tr><td align=center colspan=2><input type=submit id=btnSubmit value="로그인">&nbsp;
-		<a href="/">홈으로</a></td></tr>
+<a href="/">홈으로</a></td></tr>
 </table>
 </form>
 </body>
