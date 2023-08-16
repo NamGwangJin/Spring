@@ -12,8 +12,8 @@
 </head>
 <body style="background-color:ivory;">
 <c:if test="${id == ''}">
-<a href='login' style='text-align:right'><h2>로그인</h2></a>
-<a href='signup' style='text-align:right'><h2>회원가입</h2></a>
+<a href='login' style='text-align:right'><h3>로그인</h3></a>
+<a href='signup' style='text-align:right'><h3>회원가입</h3></a>
 </c:if>
 <c:choose>
 <c:when test="${id == 'rhkdwls'}">
