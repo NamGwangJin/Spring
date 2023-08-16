@@ -15,14 +15,13 @@ $(document)
 				   type: 'post',
 				   dataType : 'text',
 				   success: function(data) {
-					   if(data == "1"){
-						   getList();
-					   }
+
 				   }, error: function() {
 					   alert('error!');
 				   }
 		})
     };
+    getList();
 })
 .on('click','#btnDelete',function(){
 	if( $('#number').val() == '' ) {
