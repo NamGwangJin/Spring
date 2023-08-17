@@ -6,7 +6,19 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface BoardDAO {
-	ArrayList<BoardDTO> getList();
+	ArrayList<BoardDTO> listSize();
+	
+	ArrayList<BoardDTO> getList(int start, int pSize);
+	
 	BoardDTO view(int seqno);
-	int hitUp(int seqno);
+	
+	void hitUp(int seqno);
+	
+	void delPost(int seqno);
+	
+	void insPost(String title, String content, String writer, String created, String updated);
+	
+	void udPost(int seqno, String title, String content, String updated);
+	
+	int getTotal();
 }
