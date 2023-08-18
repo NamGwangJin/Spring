@@ -5,12 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${path}/resources/css/cafeStyle.css">
 <title>로그인</title>
 </head>
 <body style='background-color:ivory;'>
 <c:if test="${id==''}">
-<h1 style='color:red; text-align:center'>입력하신 회원정보와 일치하는 데이터가 없습니다.</h1>
+<h2 style='color:red; text-align:center' id=check>입력하신 회원정보와 일치하는 데이터가 없습니다.<br>다시 시도해 주세요.</h2>
 </c:if>
 <h1 style='text-align:center'>LOG IN</h1>
 <form method="POST" action="/loginOk" id="frmLogin">
