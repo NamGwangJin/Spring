@@ -39,11 +39,13 @@ $(document)
 				alert('회원가입 완료 ! 로그인 창으로 이동합니다.');
 				document.location = "/login";
 			} else {
-				alert('중복된 아이디가 있습니다. 다른 아이디를 입력해주세요.')
+				alert('중복된 아이디가 있습니다. 다른 아이디를 입력해주세요.');
+				return false;
 			}
 		},
 		error : function(){
 			alert('중복된 아이디가 있습니다. 다른 아이디를 입력해주세요.');
+			return false;
 		}
 	})
 })

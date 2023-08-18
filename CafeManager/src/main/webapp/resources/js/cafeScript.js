@@ -15,8 +15,9 @@ $(document)
 				   type: 'post',
 				   dataType : 'text',
 				   success: function(data) {
-
-				   }, error: function() {
+				   	   alert('메뉴 추가 성공!');
+				   }, 
+				   error: function() {
 					   alert('error!');
 				   }
 		})
@@ -100,7 +101,7 @@ $(document)
     totalPrice=0;
 })
 .on('click','#search',function(){
-    if ($('#mobile').val()=='' || $('#mobile').val().length < 13) {
+    if ($('#mobile').val().length < 13) {
         alert('모바일 번호를 확인해주세요.');
         return false;
     }
