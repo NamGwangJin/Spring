@@ -30,6 +30,12 @@ public class MyController {
 		}
 		return "cafe";
 	}
+	@GetMapping("/home")
+	public String goHome(HttpServletRequest req) {
+		HttpSession s = req.getSession();
+		s.invalidate();
+		return "redirect:/";
+	}
 	
 	@PostMapping("/getList")
 	@ResponseBody

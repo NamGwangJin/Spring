@@ -16,12 +16,29 @@ table { width : 80%; margin-left:auto; margin-right:auto; }
 </style>
 <body align=center>
 <h1>자유 게시판</h1>
+<c:if test="${id==''}">
 <table>
-	<tr><td></td></tr>
+	<tr>
+		<td style='text-align:right'><a href='/login'>로그인</a>&nbsp;&nbsp;
+		<a href='/signup'>회원가입</a></td>
+	</tr>
 </table>
+</c:if>
+<c:if test="${id!=''}">
+<table>
+	<tr>
+		<td style='text-align:right'>
+		<img src='img/${selficon}' style='width:50px;height:50px;'>
+		${id} 님&nbsp;&nbsp;
+		<a href='/logout'>로그아웃</a></td>
+	</tr>
+</table>
+</c:if>
 <table id=tblBoard>
 <thead>
+	<c:if test="${id!=''}">
 	<tr><th colspan=6 style='text-align:right; background-color:white; border : 1px solid white;'><a href='/write'>게시물 작성</a></th></tr>
+	</c:if>
 	<tr><th>게시물 번호</th><th>제목</th><th>작성자</th><th>조회수</th><th>작성시각</th><th>수정시각</th></tr>
 </thead>
 <tbody>

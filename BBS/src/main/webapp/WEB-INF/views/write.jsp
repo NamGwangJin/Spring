@@ -15,6 +15,7 @@ table td { border : 1px solid black; }
 <body align=center>
 <table>
 <form method='post' action='/insert' id=frmInsert name=frmInsert>
+<input type=hidden id=writer name=writer value='${id}'>
 <tr><td colspan=2><h1>게시물 작성</h1></td></tr>
 <tr><td>제목</td><td><input type=text name=title id=title maxlength=128 style='width:90%'></td></tr>
 <tr><td>내용</td><td><textarea rows=10 cols=50 name=content id=content style='width:90%'></textarea></td></tr>
@@ -26,6 +27,9 @@ table td { border : 1px solid black; }
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document)
+.ready(function(){
+	console.log($('#writer').val());
+})
 .on('submit','#frmInsert',function(){
 	if( $('#title').val()=='' ) {
 		alert('제목을 입력하세요.');

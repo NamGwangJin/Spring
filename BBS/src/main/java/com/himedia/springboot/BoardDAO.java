@@ -21,4 +21,8 @@ public interface BoardDAO {
 	void udPost(int seqno, String title, String content, String updated);
 	
 	int getTotal();
+	
+	int signup(String id, String pw);
+	
+	MemberDTO userSelect(String id, String pw);
 }

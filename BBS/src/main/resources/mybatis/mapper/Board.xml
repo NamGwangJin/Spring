@@ -34,4 +34,12 @@
 <update id="udPost">
 	update board set title=#{param2}, content=#{param3}, updated=#{param4} where seqno=#{param1};
 </update>
+
+<insert id="signup">
+	insert into member set userid=#{param1}, passcode=#{param2}
+</insert>
+
+<select id="userSelect" resultType="com.himedia.springboot.MemberDTO">
+	select userid, selficon from member where userid=#{param1} and passcode=#{param2}
+</select>
 </mapper>									  	  

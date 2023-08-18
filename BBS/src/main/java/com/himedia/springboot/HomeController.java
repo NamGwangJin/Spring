@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -21,8 +23,27 @@ public class HomeController {
 	@Autowired
 	private BoardDAO bdao;
 	
+	@GetMapping("/home")
+	public String home2(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 	@GetMapping("/")
 	public String home(HttpServletRequest req, Model model) {
+		HttpSession session = req.getSession();
+		
+		String selficon = (String) session.getAttribute("selficon");
+		model.addAttribute("selficon",selficon);
+		
+		String id = (String) session.getAttribute("id");
+		if(id == null || id.equals("")) {
+			model.addAttribute("id","");
+		} else {
+			model.addAttribute("id",id);
+		}
+		
 		int start, pSize, pNo, lastNo = 1;
 		String page = req.getParameter("pageno");
 		if(page==null || page.equals("")) {
@@ -92,13 +113,17 @@ public class HomeController {
 	
 	@GetMapping("/write")
 	public String write(HttpServletRequest req, Model model) {
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		model.addAttribute("id",id);
 		return "write";
 	}
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest req) {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		bdao.insPost(title, content, "writer", now, now);
+		String writer = req.getParameter("writer");
+		bdao.insPost(title, content, writer, now, now);
 		return "redirect:/";
 	}
 	

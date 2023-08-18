@@ -12,6 +12,7 @@ table{ border-collapse : collapse; width:75%; margin-left:auto; margin-right:aut
 table td { border : 1px solid black; }
 </style>
 <body align=center>
+<input type=hidden id=user value="${id}">
 <table>
 <tr><td colspan=2><h1>게시물 보기</h1></td></tr>
 <tr><td>게시물 번호</td><td id=seqno>${bPost.seqno}</td></tr>
@@ -21,17 +22,27 @@ table td { border : 1px solid black; }
 <tr><td>조회수</td><td>${bPost.hit}</td></tr>
 <tr><td>작성시각</td><td>${bPost.created}</td></tr>
 <tr><td>수정시각</td><td>${bPost.updated}</td></tr>
-<tr><td colspan=2><a href="/">목록보기</a>&nbsp;&nbsp;&nbsp;<a href='/write'>게시물작성</a>&nbsp;&nbsp;
+<tr><td colspan=2>
+<%
+out.print("<a href='javascript:history.go(-1)'>뒤로가기</a>");
+%>
+<c:if test="${id != null}">
+&nbsp;&nbsp;&nbsp;<a href='/write'>게시물작성</a>&nbsp;&nbsp;&nbsp;
+</c:if>
+<c:if test="${id == bPost.writer}">
 <button id=btnUd style='background-color:blue; color:white;'>수정</button>
 <button id=btnDel style='background-color:red; color:white;'>삭제</button></td></tr>
+</c:if>
 </table>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document)
+.ready(function(){
+	console.log($('#user').val());
+})
 .on('click','#btnDel',function(){
 	if(!confirm('정말로 삭제하시겠습니까?')) return false;
-	
 	document.location = '/delete?seqno='+$('#seqno').text();
 	alert("삭제가 완료되었습니다.");
 	return false;
