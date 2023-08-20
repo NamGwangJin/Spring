@@ -78,11 +78,17 @@ public class HomeController {
 		model.addAttribute("pagestr",pagestr);
 		
 		if(start==0) {
+			if (bList.size()<10) {
+				model.addAttribute("prev","");
+				model.addAttribute("next","");
+				model.addAttribute("bList", bList);
+				return "home";
+			}
 			model.addAttribute("prev","");
 			model.addAttribute("next","<a href='/?pageno=" + (pNo+1) +"'>다음 페이지</a>");
 			model.addAttribute("bList", bList);
 			return "home";
-		} else if(bList.size()<=10 && pNo == lastNo) {
+		}  else if(bList.size()<=10 && pNo == lastNo) {
 			model.addAttribute("prev","<a href='/?pageno=" + (pNo-1) +"'>이전 페이지</a>");
 			model.addAttribute("next","");
 			model.addAttribute("bList", bList);
